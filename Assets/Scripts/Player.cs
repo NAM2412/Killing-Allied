@@ -8,11 +8,13 @@ public class Player : MonoBehaviour
     [SerializeField] CharacterController characterController;
     [SerializeField] float moveSpeed = 20f;
     Vector2 moveInput;
-    
+
+    Camera mainCamera;
 
     void Start()
     {
-        moveStick.OnStickValueUpdated += MoveStick_OnStickValueUpdated ;
+        moveStick.OnStickValueUpdated += MoveStick_OnStickValueUpdated;
+        mainCamera = Camera.main; 
     }
 
     private void MoveStick_OnStickValueUpdated(Vector2 inputVal)
@@ -23,6 +25,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        characterController.Move(new Vector3(moveInput.x, 0, moveInput.y) * Time.deltaTime * moveSpeed);
+        Vector3 rightDir = mainCamera.transform.right;
+        Vector3 upDir = Vector3.Cross(rightDir, Vector3.up); 
+        characterController.Move((rightDir * moveInput.x + upDir * moveInput.y) * Time.deltaTime * moveSpeed);
     }
 }
