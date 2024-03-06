@@ -213,6 +213,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e86ad4cc96ccd240887ff2bf1170162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thumbStickTrans: {fileID: 914003559250045811}
+  backgroundTrans: {fileID: 1403687590354932436}
+  centerTrans: {fileID: 1937401863275911707}
 --- !u!1 &9083090085471433483
 GameObject:
   m_ObjectHideFlags: 0
