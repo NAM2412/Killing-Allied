@@ -10,11 +10,13 @@ public class Player : MonoBehaviour
     Vector2 moveInput;
 
     Camera mainCamera;
+    CameraController cameraController;
 
     void Start()
     {
         moveStick.OnStickValueUpdated += MoveStick_OnStickValueUpdated;
         mainCamera = Camera.main; 
+        cameraController = FindObjectOfType<CameraController>();
     }
 
     private void MoveStick_OnStickValueUpdated(Vector2 inputVal)
@@ -28,5 +30,10 @@ public class Player : MonoBehaviour
         Vector3 rightDir = mainCamera.transform.right;
         Vector3 upDir = Vector3.Cross(rightDir, Vector3.up); 
         characterController.Move((rightDir * moveInput.x + upDir * moveInput.y) * Time.deltaTime * moveSpeed);
+
+        if (moveInput.magnitude != 0 && cameraController != null) // player is moving
+        {
+            cameraController.AddYawInput(moveInput.x);
+        }
     }
 }
