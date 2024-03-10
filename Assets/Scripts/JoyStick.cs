@@ -20,7 +20,7 @@ public class JoyStick : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
 
         Vector2 loccalOffset = Vector2.ClampMagnitude(touchPos - centerPos, backgroundTrans.sizeDelta.x/4);
 
-        Vector2 inputVal = loccalOffset / backgroundTrans.sizeDelta.x / 2;
+        Vector2 inputVal = loccalOffset / (backgroundTrans.sizeDelta.x / 4);
 
         thumbStickTrans.position = centerPos + loccalOffset;
 

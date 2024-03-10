@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
 
     Camera mainCamera;
     CameraController cameraController;
+    Animator animator;
     #endregion
 
     #region Monobahaviour
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
 
         mainCamera = Camera.main; 
         cameraController = FindObjectOfType<CameraController>();
+        animator = GetComponent<Animator>();
     }
     
     void Update()
@@ -51,6 +53,12 @@ public class Player : MonoBehaviour
         characterController.Move(moveDir * Time.deltaTime * moveSpeed);
 
         UpdateAim(moveDir);
+
+        float forward = Vector3.Dot(moveDir, transform.forward);
+        float right = Vector3.Dot(moveDir, transform.right);
+
+        animator.SetFloat("forwardSpeed", forward);
+        animator.SetFloat("rightSpeed", right);
     }
 
     private void UpdateAim(Vector3 currentMoveDir)
