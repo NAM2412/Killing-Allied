@@ -10,6 +10,10 @@ public class Player : MonoBehaviour
     [SerializeField] CharacterController characterController;
     [SerializeField] float moveSpeed = 20f;
     [SerializeField] float turnSpeed = 10f;
+    [SerializeField] float animationTurnSpeed = 30f;
+
+    float animatorTurnSpeed;
+
 
     Vector2 moveInput;
     Vector2 aimInput;
@@ -82,11 +86,25 @@ public class Player : MonoBehaviour
 
     private void RotateToward(Vector3 aimDir)
     {
+        float currentTurnSpeed = 0;
         if (aimDir.magnitude != 0)
         {
+            Quaternion prevRot = transform.rotation;
+
             float turnLerpAlpha = turnSpeed * Time.deltaTime;
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(aimDir, Vector3.up), turnLerpAlpha);
+
+            Quaternion currentRot = transform.rotation;
+
+            float dir = Vector3.Dot(aimDir, transform.right) > 0 ? 1 : -1;
+
+            float rotationDelta = Quaternion.Angle(prevRot, currentRot) * dir;
+            currentTurnSpeed = rotationDelta / Time.deltaTime;
         }
+
+        animatorTurnSpeed = Mathf.Lerp(animatorTurnSpeed, currentTurnSpeed, Time.deltaTime * animationTurnSpeed);
+
+        animator.SetFloat("turnSpeed", animatorTurnSpeed);
     }
 
     private Vector3 StickInputToWorldDirection (Vector2 inputValue)
