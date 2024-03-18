@@ -52,6 +52,14 @@ public class Player : MonoBehaviour
     private void AimStick_OnStickValueUpdated(Vector2 inputValue)
     {
         aimInput = inputValue;
+        if (aimInput.magnitude > 0)
+        {
+            animator.SetBool("attacking", true);
+        }
+        else
+        {
+            animator.SetBool("attacking", false);
+        }
     }
 
     private void MoveStick_OnStickValueUpdated(Vector2 inputValue)
