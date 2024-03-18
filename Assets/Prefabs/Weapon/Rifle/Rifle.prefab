@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attachSlotTag: RifleAttachSlot
+  overrideController: {fileID: 22100000, guid: b29f22bedac27ad4ead77ebfff67018c, type: 2}
 --- !u!1001 &8280967500958022369
 PrefabInstance:
   m_ObjectHideFlags: 0
