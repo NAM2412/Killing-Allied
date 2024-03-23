@@ -18,7 +18,7 @@ public class JoyStick : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
     public event OnStickTaped onStickTaped;
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log($"On Drag: {eventData.position}");
+        //Debug.Log($"On Drag: {eventData.position}");
         Vector2 touchPos = eventData.position;
         Vector2 centerPos = backgroundTrans.position;
 

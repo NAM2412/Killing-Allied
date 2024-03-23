@@ -36,24 +36,13 @@ public class Player : MonoBehaviour
         cameraController = FindObjectOfType<CameraController>();
         animator = GetComponent<Animator>();
     }
-
-    private void StartSwitchWeapon()
-    {
-        animator.SetTrigger("switchWeapon");
-
-    }
-
-    public void SwitchWeapon()
-    {
-        inventoryComponent.NextWeapon();
-    }
-
     void Update()
     {
         MoveAndAim();
         UpdateCamera();
     }
     #endregion
+
     #region OnStickValueUpdate Event
     private void AimStick_OnStickValueUpdated(Vector2 inputValue)
     {
@@ -73,6 +62,25 @@ public class Player : MonoBehaviour
         moveInput = inputValue;
     }
     #endregion
+
+    #region Weapon
+    private void StartSwitchWeapon()
+    {
+        animator.SetTrigger("switchWeapon");
+
+    }
+    public void SwitchWeapon()
+    {
+        inventoryComponent.NextWeapon();
+    }
+
+    public void AttackPoint()
+    {
+        inventoryComponent.GetActiveWeapon().Attack();
+    }    
+    #endregion
+
+    #region Move and Aim
     private void MoveAndAim()
     {
         Vector3 moveDir = StickInputToWorldDirection(moveInput);
@@ -138,4 +146,6 @@ public class Player : MonoBehaviour
 
         return worldDir;
     }
+
+    #endregion
 }
