@@ -4,9 +4,10 @@ using UnityEngine;
 public class Pistol : Weapon
 {
     [SerializeField] AimComponent aimComp;
+    [SerializeField] float damage = 2f;
     public override void Attack()
     {
         GameObject target = aimComp.GetAimTarget();
-        Debug.Log($"Aiming at {target}");
+        DamageGameObject(target, damage);
     }
 }

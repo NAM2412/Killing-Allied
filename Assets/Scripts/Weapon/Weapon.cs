@@ -35,5 +35,14 @@ public abstract class Weapon : MonoBehaviour
     public void Unequip()
     {
         gameObject.SetActive(false);
-    }    
+    } 
+
+    public void DamageGameObject(GameObject objToDamage, float amt)
+    {
+        HealthComponent healthComp = objToDamage.GetComponent<HealthComponent>();
+        if (healthComp != null)
+        {
+            healthComp.ChangHealth(-amt);
+        }
+    }
 }
