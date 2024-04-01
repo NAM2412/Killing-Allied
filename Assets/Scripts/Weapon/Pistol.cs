@@ -1,13 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class Pistol : Weapon
+public class Pistol : RangedWeapon
 {
-    [SerializeField] AimComponent aimComp;
-    [SerializeField] float damage = 2f;
-    public override void Attack()
-    {
-        GameObject target = aimComp.GetAimTarget();
-        DamageGameObject(target, damage);
-    }
+
 }
