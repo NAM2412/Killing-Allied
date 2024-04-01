@@ -164,6 +164,7 @@ MonoBehaviour:
   healthBarToSpawn: {fileID: 3980937386819755003, guid: f5a8c1fd8bbd0014fa8c30549ad8a3b1,
     type: 3}
   healthBarAttachPoint: {fileID: 8829445402245473399}
+  healthComponent: {fileID: 51111332815010845}
 --- !u!1001 &8347049994401358624
 PrefabInstance:
   m_ObjectHideFlags: 0
