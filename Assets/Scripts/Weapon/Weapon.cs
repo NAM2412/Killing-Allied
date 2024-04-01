@@ -42,7 +42,7 @@ public abstract class Weapon : MonoBehaviour
         HealthComponent healthComp = objToDamage.GetComponent<HealthComponent>();
         if (healthComp != null)
         {
-            healthComp.ChangHealth(-amt);
+            healthComp.ChangeHealth(-amt);
         }
     }
 }

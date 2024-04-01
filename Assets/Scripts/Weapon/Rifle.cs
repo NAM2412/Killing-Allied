@@ -5,7 +5,7 @@ using UnityEngine;
 public class Rifle : Weapon
 {
     [SerializeField] AimComponent aimComp;
-    [SerializeField] float damage = 5f;
+    [SerializeField] float damage = 50f;
     public override void Attack()
     {
         GameObject target = aimComp.GetAimTarget();

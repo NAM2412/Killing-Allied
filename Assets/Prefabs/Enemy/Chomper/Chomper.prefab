@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: -2476874549526542247}
   - component: {fileID: 4508101546658796599}
   - component: {fileID: 51111332815010845}
+  - component: {fileID: 4266159351382967941}
+  - component: {fileID: 7844689195994293006}
   m_Layer: 0
   m_Name: Chomper
   m_TagString: Untagged
@@ -77,6 +79,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe8079213122dfe449210e0e845234cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
+  maxHealth: 100
+--- !u!114 &4266159351382967941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865955780368394708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f7980db37ee50946bbb18a258214761, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthComponent: {fileID: 51111332815010845}
+  animator: {fileID: 7844689195994293006}
+--- !u!95 &7844689195994293006
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865955780368394708}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 2732fe64dd2799f439fb845921df626b, type: 3}
+  m_Controller: {fileID: 9100000, guid: 1ecc97f31e5834a4a8c65cbed432e92e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &8347049994401358624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -132,7 +171,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 2732fe64dd2799f439fb845921df626b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2732fe64dd2799f439fb845921df626b, type: 3}
 --- !u!4 &8347049994401757602 stripped
 Transform:

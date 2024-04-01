@@ -19,9 +19,9 @@ public class HealthComponent : MonoBehaviour
     public delegate void OnHealthEmpty();
     public event OnHealthEmpty onHealthEmpty;
 
-    public void ChangHealth(float amt)
+    public void ChangeHealth(float amt)
     {
-        if (amt == 0)
+        if (amt == 0 || health == 0)
         {
             return;
         }
