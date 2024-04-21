@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 7844689195994293006}
   - component: {fileID: 6391108469454449977}
   - component: {fileID: 6866251628974030769}
+  - component: {fileID: 321657818219600815}
   m_Layer: 0
   m_Name: Chomper
   m_TagString: Untagged
@@ -179,6 +180,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   awareDistance: 2
+--- !u!114 &321657818219600815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865955780368394708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08d7d5e5862134b4e91b0bd3fddfaba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sightDistance: 5
+  sightHalfAngle: 45
+  eyeHeight: 1
 --- !u!1001 &8347049994401358624
 PrefabInstance:
   m_ObjectHideFlags: 0
