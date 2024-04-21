@@ -4,8 +4,14 @@ using UnityEngine;
 
 public abstract class SenseComponent : MonoBehaviour
 {
+    [SerializeField] float forgettingTime = 3f;
     static List<PerceptionStimuli> registerStimulis = new List<PerceptionStimuli>();
     List<PerceptionStimuli> perceivableStimulis = new List<PerceptionStimuli>();
+
+    Dictionary<PerceptionStimuli, Coroutine> ForgettingRoutines = new Dictionary<PerceptionStimuli, Coroutine>();
+
+    public delegate void OnPerceptionUpdated(PerceptionStimuli stimuli, bool sucessullySensed);
+    public event OnPerceptionUpdated onPerceptionUpdated;
     static public void RegisterStimuli(PerceptionStimuli stimuli)
     {
         if (registerStimulis.Contains(stimuli))
@@ -28,7 +34,15 @@ public abstract class SenseComponent : MonoBehaviour
                 if (!perceivableStimulis.Contains(stimuli))
                 {
                     perceivableStimulis.Add(stimuli);
-                    Debug.Log($"I just sensed {stimuli.gameObject}");
+                    if (ForgettingRoutines.TryGetValue(stimuli, out Coroutine routine))
+                    {
+                        StopCoroutine(routine);
+                        ForgettingRoutines.Remove(stimuli);
+                    }
+                    else
+                    {
+                        onPerceptionUpdated?.Invoke(stimuli, true);
+                    } 
                 }
             }
             else
@@ -36,12 +50,17 @@ public abstract class SenseComponent : MonoBehaviour
                 if (perceivableStimulis.Contains(stimuli))
                 {
                     perceivableStimulis.Remove(stimuli);
-                    Debug.Log($"I lost track of {stimuli.gameObject}");
+                    ForgettingRoutines.Add(stimuli,StartCoroutine(ForgetStimuli(stimuli)));
                 }
             }
         }
     }
-
+    IEnumerator ForgetStimuli(PerceptionStimuli stimuli)
+    {
+        yield return new WaitForSeconds(forgettingTime);
+        ForgettingRoutines.Remove(stimuli);
+        onPerceptionUpdated?.Invoke(stimuli, false);
+    }
     protected virtual void DrawDebug()
     {
 
