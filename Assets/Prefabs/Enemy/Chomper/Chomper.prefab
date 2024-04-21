@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 4266159351382967941}
   - component: {fileID: 7844689195994293006}
   - component: {fileID: 6391108469454449977}
+  - component: {fileID: 6866251628974030769}
   m_Layer: 0
   m_Name: Chomper
   m_TagString: Untagged
@@ -165,6 +166,19 @@ MonoBehaviour:
     type: 3}
   healthBarAttachPoint: {fileID: 8829445402245473399}
   healthComponent: {fileID: 51111332815010845}
+--- !u!114 &6866251628974030769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865955780368394708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86ee3cba617dac04ebec237d9617c8e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  awareDistance: 2
 --- !u!1001 &8347049994401358624
 PrefabInstance:
   m_ObjectHideFlags: 0
