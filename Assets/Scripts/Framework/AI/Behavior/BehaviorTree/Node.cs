@@ -14,12 +14,13 @@ public abstract class Node
     bool started = false;
     public NodeResult UpdateNode()
     {
+        Debug.Log(started);
         //one off thing
         if(!started)
         {
             started = true;
             NodeResult executeResult = Execute();
-
+            
             if (executeResult != NodeResult.Success)
             {
                 EndNode();
@@ -28,7 +29,7 @@ public abstract class Node
         }
 
         //time base
-        NodeResult updateResult = UpdateResult();
+        NodeResult updateResult = Update();
         if (updateResult != NodeResult.Inprogress)
         {
             EndNode();
@@ -37,10 +38,10 @@ public abstract class Node
     }
 
     #region override in child class
-    protected virtual NodeResult UpdateResult()
+    protected virtual NodeResult Update()
     {
         // time based
-        return NodeResult.Success;  
+        return NodeResult.Success;
     }
     protected virtual NodeResult Execute()
     {
@@ -50,7 +51,6 @@ public abstract class Node
     protected virtual void End()
     {
         // cleaned up
-
     }
     #endregion
 
