@@ -11,17 +11,15 @@ public enum NodeResult
 }
 public abstract class Node 
 {
-    bool started = false;
     public NodeResult UpdateNode()
     {
-        Debug.Log(started);
         //one off thing
         if(!started)
         {
             started = true;
             NodeResult executeResult = Execute();
             
-            if (executeResult != NodeResult.Success)
+            if (executeResult != NodeResult.Inprogress)
             {
                 EndNode();
                 return executeResult;
@@ -60,4 +58,6 @@ public abstract class Node
         started = false;
         End();
     }
+
+    bool started = false;
 }
