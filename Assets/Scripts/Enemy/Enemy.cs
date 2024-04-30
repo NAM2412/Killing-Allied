@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
         }    
     }
 
-    private void HealthComponent_TakenDamage(float health, float delta, float maxHealth)
+    private void HealthComponent_TakenDamage(float health, float delta, float maxHealth, GameObject instigator)
     {
         
     }

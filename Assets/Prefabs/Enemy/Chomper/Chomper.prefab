@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 6866251628974030769}
   - component: {fileID: 321657818219600815}
   - component: {fileID: 245347707874632139}
+  - component: {fileID: 3710667949132926995}
   m_Layer: 0
   m_Name: Chomper
   m_TagString: Untagged
@@ -115,8 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe8079213122dfe449210e0e845234cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  maxHealth: 100
+  health: 50
+  maxHealth: 50
 --- !u!114 &4266159351382967941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,6 +215,20 @@ MonoBehaviour:
   senses:
   - {fileID: 321657818219600815}
   - {fileID: 6866251628974030769}
+  - {fileID: 3710667949132926995}
+--- !u!114 &3710667949132926995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865955780368394708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b958c03e81f8b5e4ca7861764c467538, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forgettingTime: 3
 --- !u!1001 &8347049994401358624
 PrefabInstance:
   m_ObjectHideFlags: 0

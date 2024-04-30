@@ -12,14 +12,14 @@ public class HealthComponent : MonoBehaviour
     public event OnHealthChange onHealthChange;
 
     // take damage event
-    public delegate void OnTakeDamage(float health, float delta, float maxHealth);
+    public delegate void OnTakeDamage(float health, float delta, float maxHealth, GameObject instigator);
     public event OnTakeDamage onTakeDamage;
 
     // on health == 0
     public delegate void OnHealthEmpty();
     public event OnHealthEmpty onHealthEmpty;
 
-    public void ChangeHealth(float amt)
+    public void ChangeHealth(float amt, GameObject instigator)
     {
         if (amt == 0 || health == 0)
         {
@@ -30,7 +30,7 @@ public class HealthComponent : MonoBehaviour
 
         if (amt < 0)
         {
-            onTakeDamage?.Invoke(health, amt, maxHealth);
+            onTakeDamage?.Invoke(health, amt, maxHealth, instigator);
         }
         
         onHealthChange?.Invoke(health, amt, maxHealth);
