@@ -37,4 +37,14 @@ public abstract class Compositor : Node
     {
         currentChild = null;
     }
+
+    protected Node GetCurrentChild()
+    {
+        return currentChild.Value;
+    }
+
+    public void AddChild(Node newChild)
+    {
+        children.AddLast(newChild);
+    }
 }

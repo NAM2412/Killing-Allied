@@ -31,7 +31,7 @@ public class Task_Wait : Node
             Debug.Log("wait finished");
             return NodeResult.Success;
         }
-        Debug.Log($"Waiting for {timeElapsed}");
+        //Debug.Log($"Waiting for {timeElapsed}");
         return NodeResult.Inprogress;
     }
 }
