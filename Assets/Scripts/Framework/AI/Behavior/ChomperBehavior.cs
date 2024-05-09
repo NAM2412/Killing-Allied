@@ -6,8 +6,16 @@ public class ChomperBehavior : BehaviorTree
 {
     protected override void ConstructTree(out Node rootNode)
     {
-        Task_MoveToTarget moveToTarget = new Task_MoveToTarget(this, "Target", 2f);
+        Sequencer patrollingSequence = new Sequencer();
 
-        rootNode = moveToTarget;
+        Task_GetNextPatrolPoint getNextPatrolPoint = new Task_GetNextPatrolPoint(this, "PatrolPoint");
+        Task_MoveToLocation moveToPatrolPoint = new Task_MoveToLocation(this, "PatrolPoint", 3);
+        Task_Wait waitAtPatrolPoint = new Task_Wait(2f);
+
+        patrollingSequence.AddChild(getNextPatrolPoint);
+        patrollingSequence.AddChild(moveToPatrolPoint);
+        patrollingSequence.AddChild(waitAtPatrolPoint);
+
+        rootNode = patrollingSequence;
     }
 }
