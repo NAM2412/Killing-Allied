@@ -8,8 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] HealthComponent healthComponent;
     [SerializeField] Animator animator;
     [SerializeField] PerceptionComponent perceptionComponent;
-
-    GameObject target;
+    [SerializeField] BehaviorTree behaviorTree;
     void Start()
     {
         if (healthComponent != null)
@@ -25,11 +24,11 @@ public class Enemy : MonoBehaviour
     {
         if(sensed)
         {
-            this.target = target;
+            behaviorTree.Blackboard.SetOrAddData("Target", target);
         }    
         else
         {
-            this.target = null;
+            behaviorTree.Blackboard.RemoveBlackboardData("Target");
         }    
     }
 
@@ -59,7 +58,7 @@ public class Enemy : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (target != null)
+        if (behaviorTree && behaviorTree.Blackboard.GetblackboardData("Target", out GameObject target))
         {
             Vector3 drawTargetPosition = target.transform.position + Vector3.up;
             Gizmos.DrawWireSphere(drawTargetPosition, 0.7f);

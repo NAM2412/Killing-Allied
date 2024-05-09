@@ -11,7 +11,7 @@ public class Task_Log : Node
     }
     protected override NodeResult Execute()
     {
-        Debug.Log(message);
+        //Debug.Log(message);
         return NodeResult.Success;
     }
 }
