@@ -59,5 +59,10 @@ public abstract class Node
         End();
     }
 
+    public void Abort()
+    {
+        EndNode();
+    }
+
     bool started = false;
 }
