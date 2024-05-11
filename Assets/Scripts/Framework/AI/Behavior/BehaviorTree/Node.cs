@@ -48,7 +48,7 @@ public abstract class Node
     }
     protected virtual void End()
     {
-        // cleaned up
+        // reset and cleaned up
     }
     #endregion
 
@@ -65,4 +65,16 @@ public abstract class Node
     }
 
     bool started = false;
+    int priority;
+
+    public int GetPriority()
+    {
+        return priority;
+    }
+
+    public virtual void SortPriority(ref int priorityConter) 
+    {
+        priority = priorityConter++;
+        Debug.Log($"{this} has priority {priority}");
+    }
 }

@@ -6,6 +6,19 @@ public class ChomperBehavior : BehaviorTree
 {
     protected override void ConstructTree(out Node rootNode)
     {
+        Selector rootSelector = new Selector();
+        Sequencer attackTargetSeq = new Sequencer();
+        Task_MoveToTarget moveToTarget = new Task_MoveToTarget(this, "Target",2);
+        attackTargetSeq.AddChild(moveToTarget);
+
+        BlackboardDecorator attackTargetDecorator = new BlackboardDecorator(this,
+                                                                            attackTargetSeq, "Target",
+                                                                            BlackboardDecorator.RunCondition.KeyExists,
+                                                                            BlackboardDecorator.NotifyRule.RunConditionChange,
+                                                                            BlackboardDecorator.NotifyAbort.both);
+
+        rootSelector.AddChild(attackTargetDecorator);
+
         Sequencer patrollingSequence = new Sequencer();
 
         Task_GetNextPatrolPoint getNextPatrolPoint = new Task_GetNextPatrolPoint(this, "PatrolPoint");
@@ -15,7 +28,8 @@ public class ChomperBehavior : BehaviorTree
         patrollingSequence.AddChild(getNextPatrolPoint);
         patrollingSequence.AddChild(moveToPatrolPoint);
         patrollingSequence.AddChild(waitAtPatrolPoint);
+        rootSelector.AddChild(patrollingSequence);
 
-        rootNode = patrollingSequence;
+        rootNode = rootSelector;
     }
 }

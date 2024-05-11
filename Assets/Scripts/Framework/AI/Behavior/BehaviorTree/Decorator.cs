@@ -16,5 +16,9 @@ public abstract class Decorator : Node
         this.child = child;
     }
 
-
+    public override void SortPriority(ref int priorityConter)
+    {
+        base.SortPriority(ref priorityConter);
+        child.SortPriority(ref priorityConter);
+    }
 }

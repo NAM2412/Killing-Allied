@@ -35,6 +35,11 @@ public abstract class Compositor : Node
 
     protected override void End()
     {
+        if (currentChild == null)
+        {
+            return;
+        }
+        currentChild.Value.Abort();
         currentChild = null;
     }
 
@@ -46,5 +51,14 @@ public abstract class Compositor : Node
     public void AddChild(Node newChild)
     {
         children.AddLast(newChild);
+    }
+
+    public override void SortPriority(ref int priorityConter)
+    {
+        base.SortPriority(ref priorityConter);
+        foreach (var child in children)
+        {
+            child.SortPriority(ref priorityConter);
+        }
     }
 }
